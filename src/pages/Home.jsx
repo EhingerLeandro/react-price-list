@@ -5,6 +5,9 @@ import { useStore} from "../store/useStore.jsx";
 import { useNavigate } from 'react-router-dom';
 import { FadeLoader } from 'react-spinners';
 
+/* THIS IS THE HOME COMPONENT, IT IS THE FIRST ONE THAT IS DISPLAYED WHEN THE APP IS OPENED,
+AND EVERY TIME IT APPEARS IT FETCHES THE DATA FROM THE ENDPOINT. */
+
 const Home = () => {
     //This part is used to get the data from the google sheet
     const {data, loading} = useFetchData(import.meta.env.VITE_ENDPOINT)

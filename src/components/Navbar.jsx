@@ -6,9 +6,10 @@ import Select from 'react-select';
 import PDM from '../assets/PDM.jpg';
 import Cart from "../assets/carrito2.png"
 
+/* THIS COMPONENT IS A NAVBAR, AND ALSO HAS THE FUNCTIONALITY OF SEARCHING A PRODUCT */
+
 const Navbar = ({data}) => {
   let options =[];
-
   if(data!==null){
     options = data.map((item, index)=>{
       return {value:index, label:`${item.producto} ${item.presentacion}`}
@@ -40,7 +41,7 @@ const Navbar = ({data}) => {
             onChange={handleSelect}
             value={globalSelect}
             />
-            <img onClick={handleToCart} src={Cart} alt="logo" className="h-10 ml-1 mr-2 hover:inset-shadow-sm hover:inset-shadow-black rounded-full"/>
+            <img onClick={handleToCart} src={Cart} alt="logo" className="h-10 ml-1 mr-2 hover:border-2 border-slate-300 rounded-full"/>
         </div>
     </div>
   )

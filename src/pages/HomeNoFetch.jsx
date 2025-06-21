@@ -3,6 +3,14 @@ import { useStore} from "../store/useStore.jsx";
 import { useNavigate } from 'react-router-dom';
 import { FadeLoader } from 'react-spinners';
 
+/* THIS IS A CLONE OF THE HOME COMPONENT, BUT IT'S USED TO DISPLAY THE INFORMATION 
+WITHOUT FETCHING THE DATA AGAIN, BECAUSE IT BRINGS THE INFORMATION FROM THE USESTORE,
+INSTEAD OF FETCHING IT FROM THE ENDPOINT. OF COURSE WE REPEAT SOME CODE, BUT IT'S BETTER 
+THAN FETCHING THE DATA SEVERAL TIMES, AND SPENDING MORE TIME LOADING. */
+
+//Note: react doesn't allow me to use if conditional with a custom hook like useFetchData, 
+//that's why I have to use this component and method.
+
 const HomeNoFetch = () => {
    
     let navigate = useNavigate();

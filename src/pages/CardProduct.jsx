@@ -6,9 +6,11 @@ import { ToastContainer, toast, Slide } from 'react-toastify';
 import CART from '../assets/carrito2.png';
 import PDM from '../assets/PDM.jpg';
 
+/* THIS CODE HAS TWO COMPONENTS, "CardProduct" IS THE PARENTE COMPONENT AND 
+"MoreInfo" IS THE CHILD COMPONENT. */
 
 const MoreInfo = ({item})=>{
-
+ // Here we display aditional information
    return( 
     <div className="max-w-xl border-2 border-gray-300 my-1">
         <div className="grid grid-cols-2 gap-4 p-2 bg-gray-300">
@@ -36,8 +38,8 @@ const MoreInfo = ({item})=>{
 }
 
 const CardProduct = () => {
+  //This is the main component, and shows the data of the selected product; like the name, format, and price.
   const [moreInfo, setMoreInfo] = useState(false);
-
   const navigate = useNavigate();
   const addProduct  = useStore( (state)=>state.addProduct);
   const globalSelect = useStore((state)=>state.globalSelect);
@@ -63,13 +65,13 @@ const CardProduct = () => {
       <section className="max-w-xl flex justify-between bg-indigo-300 p-2">
         <img  src={PDM} alt="logo" className="h-10"/>
         <Link to="/Cart">
-          <img src={CART} alt="logo" className="h-10 hover:inset-shadow-sm hover:inset-shadow-black rounded-full "/>
+          <img src={CART} alt="logo" className="h-10 hover:border-2 border-slate-300 rounded-full "/>
         </Link>
       </section>
       <section className="max-w-xl flex justify-between">
         <button className="bg-indigo-800 hover:bg-indigo-900 text-white p-2 rounded-lg my-3 mx-1 cursor-pointer" onClick={handleGoBack}>Lista</button>
-        <button className="bg-gray-500 hover:bg-gray-600 text-white p-2 rounded-lg my-3 mx-1 cursor-pointer" onClick={handleMoreInfo}>{moreInfo ? "Ocultar" : "Más Info"}</button>
-        <button className="bg-amber-700 hover:bg-amber-800 text-white p-2 rounded-lg my-3 mx-1 cursor-pointer" onClick={handleAddProduct}>Añadir a Cotización</button>
+        <button className="bg-gray-500 active:bg-gray-600 text-white p-2 rounded-lg my-3 mx-1 cursor-pointer" onClick={handleMoreInfo}>{moreInfo ? "Ocultar" : "Más Info"}</button>
+        <button className="bg-amber-700 active:bg-amber-800 text-white p-2 rounded-lg my-3 mx-1 cursor-pointer" onClick={handleAddProduct}>Añadir a Cotización</button>
       </section>
       <section className="max-w-xl border-2 border-slate-300 my-1">
         <div className="grid grid-cols-2 gap-4 p-2 bg-slate-300">

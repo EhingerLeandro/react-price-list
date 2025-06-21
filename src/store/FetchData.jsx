@@ -1,12 +1,13 @@
 import React from 'react';
 import {useState, useEffect} from "react";
 
-function useFetchData(endPoint) {
+/* THIS IS A CUSTOM HOOK THAT FETCHES THE DATA FROM THE ENDPOINT, 
+IT ALLOWS US TO MODULEIZE THE CODE AND USE IT IN OTHER COMPONENTS */
 
+function useFetchData(endPoint) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
 
   useEffect(()=>{
     setLoading(true);
@@ -22,11 +23,9 @@ function useFetchData(endPoint) {
       setLoading(false);
     }
    }
-   fetchData()
-   
+   fetchData();
   },[endPoint]);
 
-  
   return {data, loading, error};
 }
 

@@ -14,6 +14,7 @@ export const useStore = create((set, get) => ({
        const {cart} = get();
        let newCart = [...cart];
        const index = newCart.findIndex(prod =>  prod.id === prodSelect);
+       //If the product is already in the cart (different from -1), we add one unit to the quantity
        if(index!==-1){
            newCart[index].cantidad += 1;
            set({cart:newCart})
@@ -29,6 +30,7 @@ export const useStore = create((set, get) => ({
         ))
        }
     },
+    //Here we remove one product
     removeProduct:(ind)=>{
         const {cart} = get();
         let newCart = [...cart];
@@ -41,6 +43,7 @@ export const useStore = create((set, get) => ({
     totalPrice:()=>{
         const {cart} = get();
         let acum = cart.reduce((acc, item)=>{
+            //In this part we need to change the format of the number, because google sheet sends the price as a string with a dot.
             let numSinPunto = item.venta_almacen.split(".").join("")
             let numberPrice = Number(numSinPunto);
             let subtotal = numberPrice * item.cantidad;
@@ -48,6 +51,7 @@ export const useStore = create((set, get) => ({
         }, 0);
         set({total:acum})
     },
+    //This takes the data that has been fetched and stores it in the globalData state
     setGlobalData:(data)=>{
         set({globalData:data})
     },
