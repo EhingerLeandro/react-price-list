@@ -8,7 +8,7 @@ import Cart from "../assets/carrito2.png"
 
 /* THIS COMPONENT IS A NAVBAR, AND ALSO HAS THE FUNCTIONALITY OF SEARCHING A PRODUCT */
 
-const Navbar = ({data}) => {
+const Navbar = ({data, loading}) => {
   let options =[];
   if(data!==null){
     options = data.map((item, index)=>{
@@ -26,9 +26,9 @@ const Navbar = ({data}) => {
     navigate("/CardProd");
   }
   const handleToCart=()=>{
-    setGlobalData(data);
-    setGlobalSelect(0);
-    navigate("/Cart");
+      setGlobalData(data);
+      setGlobalSelect(0);
+      navigate("/Cart");
   }
 
   return (
@@ -41,7 +41,14 @@ const Navbar = ({data}) => {
             onChange={handleSelect}
             value={globalSelect}
             />
+            
+            {/*This conditional is used to avoid using the cart before all the information is fetched completely
+            otherwise it can crash the app*/ 
+            loading ? 
+            <img src={Cart} alt="logo" className="h-10 ml-1 mr-2 hover:border-2 border-slate-300 rounded-full"/>:
             <img onClick={handleToCart} src={Cart} alt="logo" className="h-10 ml-1 mr-2 hover:border-2 border-slate-300 rounded-full"/>
+            }
+            
         </div>
     </div>
   )

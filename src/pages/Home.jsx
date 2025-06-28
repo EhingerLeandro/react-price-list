@@ -27,7 +27,7 @@ const Home = () => {
    
     return (
         <section className="App flex justify-center items-center">
-        <Navbar data={data} />
+        <Navbar data={data} loading={loading}/>
         {loading?
         <div className="mt-35 flex flex-col align-center justify-center text-indigo-800 text-lg font-bold"> 
             <h3 className="text-center">Cargando Lista de Precios... </h3> 
